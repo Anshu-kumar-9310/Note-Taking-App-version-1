@@ -19,9 +19,8 @@
             background: linear-gradient(115deg,#95c0ff,#153677);
         }
         .wrapper{
-            width: 90%;
-            height: 90vh;
-            max-width: 800px;
+            width: 100%;
+            height: 100vh;
             background-color: transparent;
             padding: 20px 20px;
             margin: 0px 20px;
@@ -70,18 +69,17 @@
         .wrapper .noteContainer{
            display: flex;
            flex-direction: column;
-           max-height: 700px;
-           overflow-y: auto;
+           max-height: 80vh;
+           overflow: auto;
         }
         .wrapper .noteContainer::-webkit-scrollbar{
             display: none;
         }
         .noteContainer .note{
             background-color: white;
-            max-width:400px;
-            overflow-y: auto;
-            min-height: 150px;
-            width: 90%;
+            max-width:350px;
+            overflow: auto;
+            min-height: 200px;
             margin: 10px 0px ;
             font-size: 16px;
             padding: 20px 30px;
