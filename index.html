@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>Notes App 1</title>
+    <style>
+         *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        .Main-container{
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            background: linear-gradient(115deg,#95c0ff,#153677);
+        }
+        .wrapper{
+            width: 90%;
+            max-width: 800px;
+            background-color: transparent;
+            padding: 20px 20px;
+            margin: 0px 20px;
+            
+        }
+        .wrapper h1{
+            display: flex;
+            align-items: center;
+            margin: 15px 0px;
+            font-size: 25px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 2px 2px 2px black;
+            
+        }
+        .wrapper h1 img{
+            width: 35px;
+            height: 35px;
+            margin-right: 5px;
+            /* filter: drop-shadow(2px 2px 5px rgb(0, 0, 0)); */
+        }
+        .wrapper .addBtn{
+            width: 170px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            font-size: 18px;
+            font-weight: 400;
+            color: white;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            background: linear-gradient(#95c0ff,#153677);
+            cursor: pointer;
+            text-shadow: 2px 2px 2px black;
+            margin-bottom: 15px;
+        }
+        .wrapper .addBtn img{
+            width: 22px;
+            height: 22px;
+            background-color: transparent;
+            margin: 0 5px 0 15px;
+           filter: drop-shadow(2px 2px 5px rgb(0, 0, 0));
+        }
+        .wrapper .noteContainer{
+           display: flex;
+           flex-direction: column;
+           max-height: 500px;
+           overflow-y: auto;
+        }
+        .wrapper .noteContainer::-webkit-scrollbar{
+            display: none;
+        }
+        .noteContainer .note{
+            background-color: white;
+            max-width:600px;
+            min-height: 150px;
+            width: 90%;
+            margin: 10px 0px ;
+            font-size: 16px;
+            padding: 20px 30px;
+            position: relative;
+            border-radius: 10px;
+            text-align: justify;
+            border: none;
+            outline: none;
+        }
+        .noteContainer .note img{
+            width: 30px;
+            height: 20px;
+            position: absolute;
+            right: 0px;
+            bottom: 5px;
+            background-color: transparent;
+            cursor: pointer;
+            margin: 10px;
+            z-index: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="Main-container">
+        <div class="wrapper">
+            <h1><img src="notes.png">Notes</h1>
+            <button class="addBtn"><img src="edit.png">Create Notes</button>
+            
+            <div class="noteContainer">
+                <!-- <p class="note" contenteditable="true">Lorem ipsum dolor sit amet consectetur, at<img src="delete.png"></p> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let AddBtn =document.querySelector(".addBtn"),
+         noteContainer =document.querySelector(".noteContainer"),
+         notes =document.querySelector(".note");
+
+        // for show all previous store data
+        function showNotes(){
+           noteContainer.innerHTML = localStorage.getItem("AnshuNotes1");
+        }
+        // call the function
+        showNotes();
+
+        // for add a new Note
+        AddBtn.addEventListener("click",function(){
+            let Note=`<p class="note" contenteditable="true" onkeyup="Notevalue()"><img src="delete.png" onclick="Delete(this)"></p>`;
+            // insertAdjacentHtml("afterbegin") it means when a new Note is add it will shown at the  top of the Note's Element
+            noteContainer.insertAdjacentHTML("afterbegin",Note);
+            // noteContainer.innerHTML+= Note;
+            saveNote();
+            showNotes();
+        });
+        // for save data locally
+        function saveNote(){
+            // Don't give value like Notes instead of AnshuNotes1 because in other Notes project i also give the name so we choose different name
+            localStorage.setItem("AnshuNotes1",noteContainer.innerHTML);
+        }
+        // for delete Note
+        function Delete(elem){
+            // console.log(elem.parentElement);
+            elem.parentElement.remove();
+            saveNote();
+            showNotes();
+        }
+        // on value change in the Note data will saved
+        function Notevalue(){
+            saveNote();
+        }
+
+    </script>
+</body>
+</html>
