@@ -16,15 +16,21 @@
             display: flex;
             height: 100vh;
             width: 100vw;
+            overflow: hidden;
             background: linear-gradient(115deg,#95c0ff,#153677);
         }
         .wrapper{
             width: 90%;
             height: 100vh;
             background-color: transparent;
+            /* background-color: red; */
             padding: 20px 20px;
             margin: 0px 20px;
+            overflow-y: scroll;
             
+        }
+        .wrapper::-webkit-scrollbar{
+            display: none;
         }
         .wrapper h1{
             display: flex;
@@ -64,23 +70,26 @@
             height: 22px;
             background-color: transparent;
             margin: 0 5px 0 15px;
-           filter: drop-shadow(2px 2px 5px rgb(0, 0, 0));
+            /* filter: drop-shadow(2px 2px 5px rgb(0, 0, 0)); */
         }
         .wrapper .noteContainer{
            display: flex;
-           flex-direction: column;
-           max-height: 80vh;
-           overflow-y: auto;
+           flex-wrap: wrap;
+           /* flex-direction: column; */
+           max-height: 75vh;
+           overflow-y: scroll;
+           position: relative;
+           /* background-color: blue; */
         }
         .wrapper .noteContainer::-webkit-scrollbar{
             display: none;
         }
         .noteContainer .note{
             background-color: white;
-            max-width:350px;
-            overflow: auto;
-            min-height: 200px;
-            margin: 10px 0px ;
+            width:350px;
+            overflow: scroll;
+            height: 300px;
+            margin: 10px 30px ;
             font-size: 16px;
             padding: 20px 30px;
             position: relative;
@@ -88,18 +97,25 @@
             text-align: justify;
             border: none;
             outline: none;
+            /* background-color: red; */
+
+        }
+        .noteContainer .note::-webkit-scrollbar{
+            display: none;
         }
         .noteContainer .note img{
             width: 30px;
             height: 20px;
             position: absolute;
             right: 0px;
-            bottom: 5px;
+            top: 5px;
             background-color: transparent;
+            /* background-color: pink; */
             cursor: pointer;
             margin: 10px;
             z-index: 1;
         }
+        
         
     </style>
 </head>
